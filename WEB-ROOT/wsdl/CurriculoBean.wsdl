@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://facade" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://facade" xmlns:intf="http://facade" xmlns:tns1="http://model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://facade" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <element name="remover">
+    <complexType>
+     <sequence>
+      <element name="curriculo" type="tns1:Curriculo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="removerResponse">
+    <complexType/>
+   </element>
+   <element name="incluir">
+    <complexType>
+     <sequence>
+      <element name="curriculo" type="tns1:Curriculo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="incluirResponse">
+    <complexType/>
+   </element>
+   <element name="atualizar">
+    <complexType>
+     <sequence>
+      <element name="curriculo" type="tns1:Curriculo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="atualizarResponse">
+    <complexType>
+     <sequence>
+      <element name="atualizarReturn" type="tns1:Curriculo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarCodigo">
+    <complexType>
+     <sequence>
+      <element name="codigo" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarCodigoResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarCodigoReturn" type="tns1:Curriculo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarDescricao">
+    <complexType>
+     <sequence>
+      <element name="descricao" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarDescricaoResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarDescricaoReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="assimilaCurriculoExperiencia">
+    <complexType>
+     <sequence>
+      <element name="curId" type="xsd:int"/>
+      <element name="expId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="assimilaCurriculoExperienciaResponse">
+    <complexType/>
+   </element>
+   <element name="getLista">
+    <complexType/>
+   </element>
+   <element name="getListaResponse">
+    <complexType>
+     <sequence>
+      <element name="getListaReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ejbCreate">
+    <complexType/>
+   </element>
+   <element name="ejbCreateResponse">
+    <complexType/>
+   </element>
+   <element name="ejbRemove">
+    <complexType/>
+   </element>
+   <element name="ejbRemoveResponse">
+    <complexType/>
+   </element>
+   <element name="ejbActivate">
+    <complexType/>
+   </element>
+   <element name="ejbActivateResponse">
+    <complexType/>
+   </element>
+   <element name="ejbPassivate">
+    <complexType/>
+   </element>
+   <element name="ejbPassivateResponse">
+    <complexType/>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://facade"/>
+   <import namespace="http://model"/>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://facade"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <complexType name="Curriculo">
+    <sequence>
+     <element name="area" nillable="true" type="xsd:string"/>
+     <element name="bairro" nillable="true" type="xsd:string"/>
+     <element name="celular" nillable="true" type="xsd:int"/>
+     <element name="celularDDD" nillable="true" type="xsd:int"/>
+     <element name="cep" nillable="true" type="xsd:string"/>
+     <element name="cidade" nillable="true" type="xsd:string"/>
+     <element name="codigo" nillable="true" type="xsd:int"/>
+     <element name="complemento" nillable="true" type="xsd:string"/>
+     <element name="cpf" nillable="true" type="xsd:string"/>
+     <element name="desejoTrabalharCidade" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="empregado" nillable="true" type="xsd:string"/>
+     <element name="endereco" nillable="true" type="xsd:string"/>
+     <element name="especializacoes" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="estadoCivil" nillable="true" type="xsd:string"/>
+     <element name="experiencias" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="formacaoCurso" nillable="true" type="xsd:string"/>
+     <element name="formacaoDataInicioMesAno" nillable="true" type="xsd:string"/>
+     <element name="formacaoDataSaidaMesAno" nillable="true" type="xsd:string"/>
+     <element name="formacaoGrau" nillable="true" type="xsd:string"/>
+     <element name="formacaoInstituicao" nillable="true" type="xsd:string"/>
+     <element name="homePage" nillable="true" type="xsd:string"/>
+     <element name="idiomas" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+     <element name="minicurriculo" nillable="true" type="xsd:string"/>
+     <element name="nascimento" nillable="true" type="xsd:dateTime"/>
+     <element name="nivel" nillable="true" type="xsd:string"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="numero" nillable="true" type="xsd:int"/>
+     <element name="objetivo" nillable="true" type="xsd:string"/>
+     <element name="palavraChave" nillable="true" type="xsd:string"/>
+     <element name="pretensao" nillable="true" type="xsd:string"/>
+     <element name="ramo" nillable="true" type="xsd:string"/>
+     <element name="recado" nillable="true" type="xsd:string"/>
+     <element name="senha" nillable="true" type="xsd:string"/>
+     <element name="senhaDica" nillable="true" type="xsd:string"/>
+     <element name="sexo" nillable="true" type="xsd:string"/>
+     <element name="telefone" nillable="true" type="xsd:int"/>
+     <element name="telefoneDDD" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="ejbCreateRequest">
+
+      <wsdl:part element="impl:ejbCreate" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaRequest">
+
+      <wsdl:part element="impl:getLista" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejbPassivateResponse">
+
+      <wsdl:part element="impl:ejbPassivateResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="assimilaCurriculoExperienciaRequest">
+
+      <wsdl:part element="impl:assimilaCurriculoExperiencia" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="incluirRequest">
+
+      <wsdl:part element="impl:incluir" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejbActivateResponse">
+
+      <wsdl:part element="impl:ejbActivateResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="removerResponse">
+
+      <wsdl:part element="impl:removerResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarDescricaoRequest">
+
+      <wsdl:part element="impl:consultarDescricao" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejbPassivateRequest">
+
+      <wsdl:part element="impl:ejbPassivate" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejbActivateRequest">
+
+      <wsdl:part element="impl:ejbActivate" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejbCreateResponse">
+
+      <wsdl:part element="impl:ejbCreateResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="atualizarRequest">
+
+      <wsdl:part element="impl:atualizar" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarDescricaoResponse">
+
+      <wsdl:part element="impl:consultarDescricaoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaResponse">
+
+      <wsdl:part element="impl:getListaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="atualizarResponse">
+
+      <wsdl:part element="impl:atualizarResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejbRemoveResponse">
+
+      <wsdl:part element="impl:ejbRemoveResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="incluirResponse">
+
+      <wsdl:part element="impl:incluirResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarCodigoRequest">
+
+      <wsdl:part element="impl:consultarCodigo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarCodigoResponse">
+
+      <wsdl:part element="impl:consultarCodigoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="removerRequest">
+
+      <wsdl:part element="impl:remover" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="assimilaCurriculoExperienciaResponse">
+
+      <wsdl:part element="impl:assimilaCurriculoExperienciaResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ejbRemoveRequest">
+
+      <wsdl:part element="impl:ejbRemove" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CurriculoBean">
+
+      <wsdl:operation name="remover">
+
+         <wsdl:input message="impl:removerRequest" name="removerRequest"/>
+
+         <wsdl:output message="impl:removerResponse" name="removerResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="incluir">
+
+         <wsdl:input message="impl:incluirRequest" name="incluirRequest"/>
+
+         <wsdl:output message="impl:incluirResponse" name="incluirResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="atualizar">
+
+         <wsdl:input message="impl:atualizarRequest" name="atualizarRequest"/>
+
+         <wsdl:output message="impl:atualizarResponse" name="atualizarResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarCodigo">
+
+         <wsdl:input message="impl:consultarCodigoRequest" name="consultarCodigoRequest"/>
+
+         <wsdl:output message="impl:consultarCodigoResponse" name="consultarCodigoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarDescricao">
+
+         <wsdl:input message="impl:consultarDescricaoRequest" name="consultarDescricaoRequest"/>
+
+         <wsdl:output message="impl:consultarDescricaoResponse" name="consultarDescricaoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="assimilaCurriculoExperiencia">
+
+         <wsdl:input message="impl:assimilaCurriculoExperienciaRequest" name="assimilaCurriculoExperienciaRequest"/>
+
+         <wsdl:output message="impl:assimilaCurriculoExperienciaResponse" name="assimilaCurriculoExperienciaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLista">
+
+         <wsdl:input message="impl:getListaRequest" name="getListaRequest"/>
+
+         <wsdl:output message="impl:getListaResponse" name="getListaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbCreate">
+
+         <wsdl:input message="impl:ejbCreateRequest" name="ejbCreateRequest"/>
+
+         <wsdl:output message="impl:ejbCreateResponse" name="ejbCreateResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbRemove">
+
+         <wsdl:input message="impl:ejbRemoveRequest" name="ejbRemoveRequest"/>
+
+         <wsdl:output message="impl:ejbRemoveResponse" name="ejbRemoveResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbActivate">
+
+         <wsdl:input message="impl:ejbActivateRequest" name="ejbActivateRequest"/>
+
+         <wsdl:output message="impl:ejbActivateResponse" name="ejbActivateResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbPassivate">
+
+         <wsdl:input message="impl:ejbPassivateRequest" name="ejbPassivateRequest"/>
+
+         <wsdl:output message="impl:ejbPassivateResponse" name="ejbPassivateResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CurriculoBeanSoapBinding" type="impl:CurriculoBean">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="remover">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="incluir">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="incluirRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="incluirResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="atualizar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="atualizarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="atualizarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarCodigo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarCodigoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarCodigoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarDescricao">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarDescricaoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarDescricaoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="assimilaCurriculoExperiencia">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="assimilaCurriculoExperienciaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="assimilaCurriculoExperienciaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLista">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbCreate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ejbCreateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ejbCreateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbRemove">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ejbRemoveRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ejbRemoveResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbActivate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ejbActivateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ejbActivateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ejbPassivate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ejbPassivateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ejbPassivateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CurriculoBeanService">
+
+      <wsdl:port binding="impl:CurriculoBeanSoapBinding" name="CurriculoBean">
+
+         <wsdlsoap:address location="http://localhost:8080/AplicacaoWeb1/services/CurriculoBean"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CurriculoBeanService WSDL service -->
+
+  <service name="CurriculoBean" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://facade"/>
+      <parameter name="wsdlServiceElement" value="CurriculoBeanService"/>
+      <parameter name="schemaQualified" value="http://model,http://xml.apache.org/xml-soap,http://facade"/>
+      <parameter name="wsdlServicePort" value="CurriculoBean"/>
+      <parameter name="className" value="facade.CurriculoBean"/>
+      <parameter name="wsdlPortType" value="CurriculoBean"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://facade" name="remover" qname="operNS:remover" soapAction="">
+        <parameter xmlns:pns="http://facade" xmlns:tns="http://model" qname="pns:curriculo" type="tns:Curriculo"/>
+      </operation>
+      <operation xmlns:operNS="http://facade" name="incluir" qname="operNS:incluir" soapAction="">
+        <parameter xmlns:pns="http://facade" xmlns:tns="http://model" qname="pns:curriculo" type="tns:Curriculo"/>
+      </operation>
+      <operation xmlns:operNS="http://facade" xmlns:retNS="http://facade" xmlns:rtns="http://model" name="atualizar" qname="operNS:atualizar" returnQName="retNS:atualizarReturn" returnType="rtns:Curriculo" soapAction="">
+        <parameter xmlns:pns="http://facade" xmlns:tns="http://model" qname="pns:curriculo" type="tns:Curriculo"/>
+      </operation>
+      <operation xmlns:operNS="http://facade" xmlns:retNS="http://facade" xmlns:rtns="http://model" name="consultarCodigo" qname="operNS:consultarCodigo" returnQName="retNS:consultarCodigoReturn" returnType="rtns:Curriculo" soapAction="">
+        <parameter xmlns:pns="http://facade" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:codigo" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://facade" xmlns:retNS="http://facade" xmlns:rtns="http://facade" xmlns:tns="http://facade" name="consultarDescricao" qname="operNS:consultarDescricao" returnQName="retNS:consultarDescricaoReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" xmlns:pns="http://facade" qname="pns:descricao" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://facade" name="assimilaCurriculoExperiencia" qname="operNS:assimilaCurriculoExperiencia" soapAction="">
+        <parameter xmlns:pns="http://facade" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:curId" type="tns:int"/>
+        <parameter xmlns:pns="http://facade" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:expId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://facade" xmlns:retNS="http://facade" xmlns:rtns="http://facade" xmlns:tns="http://facade" name="getLista" qname="operNS:getLista" returnQName="retNS:getListaReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://facade" name="ejbCreate" qname="operNS:ejbCreate" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://facade" name="ejbRemove" qname="operNS:ejbRemove" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://facade" name="ejbActivate" qname="operNS:ejbActivate" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://facade" name="ejbPassivate" qname="operNS:ejbPassivate" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="consultarDescricao atualizar ejbPassivate assimilaCurriculoExperiencia consultarCodigo remover incluir ejbActivate ejbRemove getLista ejbCreate"/>
+
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbPassivate" type="java:facade.EjbPassivate" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;incluirResponse" type="java:facade.IncluirResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;consultarDescricaoResponse" type="java:facade.ConsultarDescricaoResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;assimilaCurriculoExperiencia" type="java:facade.AssimilaCurriculoExperiencia" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;removerResponse" type="java:facade.RemoverResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;remover" type="java:facade.Remover" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;consultarCodigo" type="java:facade.ConsultarCodigo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;atualizar" type="java:facade.Atualizar" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbRemoveResponse" type="java:facade.EjbRemoveResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://facade" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;assimilaCurriculoExperienciaResponse" type="java:facade.AssimilaCurriculoExperienciaResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model" qname="ns:Curriculo" type="java:model.Curriculo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;incluir" type="java:facade.Incluir" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbActivateResponse" type="java:facade.EjbActivateResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbRemove" type="java:facade.EjbRemove" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbCreateResponse" type="java:facade.EjbCreateResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;consultarCodigoResponse" type="java:facade.ConsultarCodigoResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;getListaResponse" type="java:facade.GetListaResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;consultarDescricao" type="java:facade.ConsultarDescricao" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbPassivateResponse" type="java:facade.EjbPassivateResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbCreate" type="java:facade.EjbCreate" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;atualizarResponse" type="java:facade.AtualizarResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;ejbActivate" type="java:facade.EjbActivate" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://facade" qname="ns:&gt;getLista" type="java:facade.GetLista" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
