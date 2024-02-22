@@ -21,7 +21,7 @@ Portuguese:
 9 - Verificar se as tabelas da aplicação foram criadas e populadas. 
 
 10 - Compilar a aplicação e fazer o deploy no Jboss.
-
+________________________________________________________________________________________________________________________________
 
 English:
 # JEE5 Application Example
